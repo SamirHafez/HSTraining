@@ -1,0 +1,2 @@
+MainPackage=C:\Users\Rhyme\Documents\Projects\HST\HST\bin\x86\Debug\HST_1.0.0.2_x86_Debug.appx
+SymbolPackage=C:\Users\Rhyme\Documents\Projects\HST\HST\AppPackages\HST_1.0.0.2_Debug_Test\HST_1.0.0.2_x86_Debug.appxsym

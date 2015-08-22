@@ -1,0 +1,7 @@
+﻿<Application x:Class="HST.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:HST" xmlns:converters="using:HST.Converters">
+    <Application.Resources>
+        <vm:ViewModelLocator x:Key="Locator" xmlns:vm="using:HST.Core.ViewModels" />
+        <converters:WeightConverter x:Key="WeightConverter"/>
+        
+    </Application.Resources>
+</Application>
