@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using HST.Core.Models;
+using HST.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -59,15 +60,34 @@ namespace HST.Core.ViewModels
             }
         }
 
-        readonly INavigationService NavigationService;
-        public WorkoutViewModel(INavigationService navigationService)
+        RelayCommand newWorkoutCommand;
+        public RelayCommand NewWorkoutCommand
         {
-            NavigationService = navigationService; 
+            get
+            {
+                return newWorkoutCommand ??
+                    (newWorkoutCommand = new RelayCommand(async () => 
+                    {
+                        var nextWorkout = workout.Continue($"{workout.Name} - {DateTime.Now.ToString("YYYY/MM/DD")}", .10);
+                        await StorageService.InsertWorkoutAsync(nextWorkout);
+                        NavigationService.GoBack();
+                    }));
+            }
+        }
+
+        readonly INavigationService NavigationService;
+        readonly IStorageService StorageService;
+        HSTWorkout workout;
+
+        public WorkoutViewModel(INavigationService navigationService, IStorageService storageService)
+        {
+            NavigationService = navigationService;
+            StorageService = storageService;
         }
 
         public override Task InitAsync(object parameter)
         {
-            var workout = (HSTWorkout)parameter;
+            workout = (HSTWorkout)parameter;
 
             Cycle1 = workout.Cycle1;
             Cycle2 = workout.Cycle2;

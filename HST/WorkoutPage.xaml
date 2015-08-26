@@ -15,6 +15,7 @@
             <Button Command="{Binding EnterCycleCommand}" CommandParameter="{Binding Cycle2}" Content="Cycle2"></Button>
             <Button Command="{Binding EnterCycleCommand}" CommandParameter="{Binding Cycle3}" Content="Cycle3"></Button>
             <Button Command="{Binding EnterCycleCommand}" CommandParameter="{Binding Cycle4}" Content="Cycle4"></Button>
+            <Button Command="{Binding NewWorkoutCommand}" Content="Next"></Button>
         </ListView>
     </Grid>
 </local:ViewPage>
